@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { login } from '../../services/authService';
-import '../../styles/Login.css';
+import { login } from '../services/authService.js';
+import '../styles/Login.css';
+import { useNavigate } from "react-router-dom";
 
-export const Login = ({ onLoginSuccess }) => {
+
+const Login = () => {
     const [dni, setDni] = useState('');
     const [password, setPassword] = useState('');
     const [area, setArea] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-
+    const navigate = useNavigate();
     const areas = [
         { id: 1, nombre: 'Abastecimiento' },
         { id: 2, nombre: 'Recursos Humanos' },
@@ -21,8 +23,8 @@ export const Login = ({ onLoginSuccess }) => {
         setLoading(true);
 
         try {
-            const user = await login(dni, password, area);
-            onLoginSuccess(user);
+            await login(dni, password, area);
+            navigate("/dashboard");
         } catch (err) {
             setError(err.message || 'Error al iniciar sesión');
         } finally {
@@ -109,3 +111,5 @@ export const Login = ({ onLoginSuccess }) => {
         </div>
     );
 };
+
+export default Login;
