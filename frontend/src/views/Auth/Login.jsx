@@ -11,10 +11,8 @@ export const Login = ({ onLoginSuccess }) => {
 
     const areas = [
         { id: 1, nombre: 'Abastecimiento' },
-        { id: 2, nombre: 'Archivo Central' },
-        { id: 3, nombre: 'Recursos Humanos' },
-        { id: 4, nombre: 'Tesorería' },
-        { id: 5, nombre: 'Logística' }
+        { id: 2, nombre: 'Recursos Humanos' },
+        { id: 3, nombre: 'Tesorería' },
     ];
 
     const handleSubmit = async (e) => {

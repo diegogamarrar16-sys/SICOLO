@@ -37,8 +37,9 @@ import java.util.Date;
         @Column(nullable = false)
         private String password;
 
-        @Column(nullable = false)
-        private String rol;
+        @ManyToOne
+        @JoinColumn(name="id_rol")
+        private Rol rol;
 
         @Column(nullable = false)
         private boolean estado;
